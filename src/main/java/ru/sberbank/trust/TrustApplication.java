@@ -5,6 +5,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ImportResource;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import static lombok.AccessLevel.PRIVATE;
 
 @AllArgsConstructor
 @SpringBootApplication
+@EnableAspectJAutoProxy
 @ImportResource("classpath:ioc.xml")
 @FieldDefaults(level = PRIVATE, makeFinal = true)
 public class TrustApplication {
@@ -35,10 +37,11 @@ public class TrustApplication {
         return UsualPerson.builder()
                 .id(2L)
                 .name("Вася Пупкин")
-                .age(15)
+                .age(17)
                 .contact("222-33-22")
                 .contact("kljhdg@sdfg.ru")
                 .height(1.78)
+                .isBroke(false)
                 .country(belarus)
                 .build();
     }

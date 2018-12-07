@@ -1,21 +1,43 @@
 package ru.sberbank.trust.aop;
 
 
+import lombok.NonNull;
+import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+import ru.sberbank.trust.Person;
 
 import static lombok.AccessLevel.PRIVATE;
 
 @Slf4j
 @Aspect
+@Component
 @FieldDefaults(level = PRIVATE)
 public class Poitness {
-/*
-    @Before("execution(* sellSquishee(..))")
-    public void sayHello(JoinPoint joinPiont) {
-        AopLog.append("Hello " + ((Customer) joinPiont.getArgs()[0]).getName() + ". How are you doing? \n");
+
+    public  @interface Congrats {
     }
+
+    @Before("@annotation(Congrats)")
+    public final void sayHello (@NonNull JoinPoint joinPoint) {
+      String name =   ((Person) joinPoint.getArgs()[0]).getName();
+        System.out.printf("Hello, %s. How are you ? \n", name);
+    }
+    @FeedBackNeeded
+    @AfterReturning(pointcut = "@annotation(FeedBackNeeded)",returning = "retVal")
+    public final void askOpinion(@NonNull Object retVal) {
+        System.out.printf("Is Good Enough? \n ", ((Squishee) retVal).getName());
+    }
+
+
+
+/*
+
 
     @AfterReturning(pointcut = "execution(* sellSquishee(..))",
             returning = "retVal", argNames = "retVal")

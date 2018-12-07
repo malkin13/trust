@@ -3,6 +3,7 @@
        xmlns:c="http://www.springframework.org/schema/c"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -23,7 +24,7 @@
           c:id="1"
           c:name="Ivan Ivanov"
           c:country-ref="belarus"
-          c:age="17"
+          c:age="15"
           c:height="1.78"
           c:isProgrammer="true"
           c:isBroke="false"

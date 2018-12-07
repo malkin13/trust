@@ -9,10 +9,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import ru.sberbank.trust.aop.Bar;
 
 import static lombok.AccessLevel.PRIVATE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import org.assertj.core.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -28,16 +30,34 @@ class TrustApplicationTest {
     @Autowired
     Person ivanIvanov;
 
+    @Autowired
+    Bar bar;
+
     @Test
     @SneakyThrows
     @DisplayName("UsualPerson injects correctly")
     void testName() {
         // given
-        assertThat(vasyaPupkin.getName(), is("Вася Пупкин"));
-        assertThat(ivanIvanov.getName(), is("Ivan Ivanov"));
+
+        assertThat(vasyaPupkin.getName()).isEqualTo("Вася Пупкин");
+        assertThat(ivanIvanov.getName()).isEqualTo("Ivan Ivanov");
 
         System.out.println("vasyaPupkin = " + vasyaPupkin);
         System.out.println("ivanIvanov = " + ivanIvanov);
 
     }
-    }
+
+
+
+ @Test
+@SneakyThrows
+@DisplayName(" AOP method Correct")
+void testAOP() {
+   TestUtils.fromSystemOutPrintln() -> {
+       String name = bar.sellSquishee(vasyaPupkin).getName();
+
+     }
+
+
+ }
+}

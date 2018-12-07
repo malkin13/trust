@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>ru.sberbank</groupId>
-    <artifactId>trust</artifactId>
+
+    <groupId>ru.vlapin.courses.spring</groupId>
+    <artifactId>spring-fundamwntals5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>trust</name>
+    <name>spring-fundamwntals5</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -20,6 +23,50 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- TEST -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-params</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency><!--JUnit 5 - params-->
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj-core.version}</version>
+                <scope>test</scope>
+            </dependency><!--AssertJ-->
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>java-hamcrest</artifactId>
+                <version>${java-hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency><!--Hamcrest-->
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito-all.version}</version>
+                <scope>test</scope>
+            </dependency><!--Mockito-->
+            <dependency>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency><!--JUnit 5 - vintage (JUnit 4-3 tests support) -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency><!--JUnit 5 - engine (for run tests)-->
+
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -37,6 +84,34 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- TEST -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+        </dependency><!--JUnit 5 - params-->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency><!--AssertJ-->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>java-hamcrest</artifactId>
+        </dependency><!--Hamcrest-->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+        </dependency><!--Mockito-->
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+        </dependency><!--JUnit 5 - vintage (JUnit 4-3 tests support) -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+        </dependency><!--JUnit 5 - engine (for run tests)-->
+
+
     </dependencies>
 
     <build>

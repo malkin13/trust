@@ -25,7 +25,7 @@ public class TrustApplication {
     @Bean
     Person person(Country russia) {
         return Person.builder()
-                .name("Вася пупкин")
+                .name("Вася Пупкин")
                .age(15)
                .contact("222-33-22")
                 .contact("1@1.com")

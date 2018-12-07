@@ -39,8 +39,8 @@ class TrustApplicationTest {
     void testName() {
         // given
 
-        assertThat(vasyaPupkin.getName()).isEqualTo("Вася Пупкин");
-        assertThat(ivanIvanov.getName()).isEqualTo("Ivan Ivanov");
+     //   assertThat(vasyaPupkin.getName()).isEqualTo("Вася Пупкин");
+      ///  assertThat(ivanIvanov.getName()).isEqualTo("Ivan Ivanov");
 
         System.out.println("vasyaPupkin = " + vasyaPupkin);
         System.out.println("ivanIvanov = " + ivanIvanov);
@@ -53,10 +53,7 @@ class TrustApplicationTest {
 @SneakyThrows
 @DisplayName(" AOP method Correct")
 void testAOP() {
-   TestUtils.fromSystemOutPrintln() -> {
-       String name = bar.sellSquishee(vasyaPupkin).getName();
 
-     }
 
 
  }

@@ -14,21 +14,30 @@ import static lombok.AccessLevel.PRIVATE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @FieldDefaults(level = PRIVATE, makeFinal = true)
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 class TrustApplicationTest {
 
+
+    @Autowired
+    Person vasyaPupkin;
+
+    @Autowired
+    Person ivanIvanov;
+
     @Test
     @SneakyThrows
-    @DisplayName("Person injects correctly")
-    void person() {
+    @DisplayName("UsualPerson injects correctly")
+    void testName() {
+        // given
+        assertThat(vasyaPupkin.getName(), is("Вася Пупкин"));
+        assertThat(ivanIvanov.getName(), is("Ivan Ivanov"));
 
-        assertThat(person.getName(), is("Вася Пупкин"));
+        System.out.println("vasyaPupkin = " + vasyaPupkin);
+        System.out.println("ivanIvanov = " + ivanIvanov);
 
     }
-
-    Person person;
-
-}
+    }

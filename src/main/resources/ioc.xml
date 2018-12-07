@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="russia" class="ru.sberbank.trust.Country"
+          c:id="1"
+          c:name="Russia"
+          c:groupName="SWX"/>
+
+    <bean id="ukraine" class="ru.sberbank.trust.Country"
+          c:id="2"
+          c:name="Ukraine"
+          c:groupName="BOR"/>
+
+    <bean id="ivanIvanov" class="ru.sberbank.trust.UsualPerson"
+          c:id="1"
+          c:name="Ivan Ivanov"
+          c:country-ref="belarus"
+          c:age="17"
+          c:height="1.78"
+          c:isProgrammer="true"
+          c:isBroke="false"
+          c:contacts="123123"/>
+
+    <util:list id="contacts">
+        <value>222-33-22</value>
+        <value>dhf@dsfg.com</value>
+    </util:list>
+
+</beans>

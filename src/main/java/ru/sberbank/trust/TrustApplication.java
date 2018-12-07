@@ -5,12 +5,16 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportResource;
 
 import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
 
+@AllArgsConstructor
 @SpringBootApplication
+@ImportResource("classpath:ioc.xml")
+@FieldDefaults(level = PRIVATE, makeFinal = true)
 public class TrustApplication {
 
     public static void main(String[] args) {
@@ -18,57 +22,25 @@ public class TrustApplication {
     }
 
     @Bean
-    Country russia() {
-        return new Country("Rossia","PinkFloyd");
+    Country belarus() {
+        return Country.builder()
+                .id(3)
+                .name("Беларуссия")
+                .groupName("BEL")
+                .build();
     }
 
     @Bean
-    Person person(Country russia) {
-        return Person.builder()
+    Person vasyaPupkin(Country belarus) {
+        return UsualPerson.builder()
+                .id(2L)
                 .name("Вася Пупкин")
-               .age(15)
-               .contact("222-33-22")
-                .contact("1@1.com")
-                .height(1.4)
-                .country(russia)
-               .build() ;
+                .age(15)
+                .contact("222-33-22")
+                .contact("kljhdg@sdfg.ru")
+                .height(1.78)
+                .country(belarus)
+                .build();
     }
-}
-
-@Data
-@Builder
-@AllArgsConstructor
-@FieldDefaults(level = PRIVATE)
-class Country {
-
-    Integer id;
-
-    String name;
-
-    String gropNaame;
-
-    public Country(String name, String gropNaame) {
-        this.name = name;
-        this.gropNaame = gropNaame;
-    }
-
-}
-
-@Data
-@Builder
-@AllArgsConstructor
-@FieldDefaults(level = PRIVATE)
-class Person {
-    Long id;
-
-    String name;
-
-    Country country;
-
-    int age;
-    double height;
-    boolean isProgrammer;
-    @Singular
-    List<String> contacts;
 }
 

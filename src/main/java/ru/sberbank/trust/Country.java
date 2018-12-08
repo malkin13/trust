@@ -6,19 +6,19 @@ import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import lombok.experimental.FieldNameConstants;
+import ru.sberbank.trust.dao.Identifiable;
 
 import static lombok.AccessLevel.PRIVATE;
 
 
 @Data
 @Builder
+@FieldNameConstants
 @AllArgsConstructor
 @FieldDefaults(level = PRIVATE)
 
-public class Country {
+public class Country implements Identifiable<Integer> {
     @Default
     Integer id = 1;
 
